@@ -15,7 +15,7 @@ new class extends Component {
             $query->where('name', 'like', '%'.$this->search.'%')
                   ->orWhere('email', 'like', '%'.$this->search.'%')
                   ->orWhere('created_at', 'like', '%'.$this->search.'%');
-        })->latest()->paginate(8);
+        })->latest()->paginate(10);
     }
     
 

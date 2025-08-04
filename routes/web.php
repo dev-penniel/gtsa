@@ -3,11 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
-Route::view('dashboard', 'dashboard')
+Volt::route('/', 'map-view')->name('home');
+Volt::route('listing/{slug}', 'listing')->name('listing');
+
+Volt::route('dashboard', 'listings')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -26,6 +29,12 @@ Route::middleware(['auth'])->group(function(){
     Volt::route('products/index', 'products.index')->name('products.index');
     Volt::route('products/create', 'products.create')->name('products.create')->middleware(['role:General Admin|Manager']);
     Volt::route('products/{id}/edit', 'products.edit')->name('products.edit')->middleware(['role:General Admin|Manager']);
+
+});
+
+Route::middleware(['auth'])->group(function(){
+
+    Volt::route('listings', 'listings')->name('listings');
 
 });
 

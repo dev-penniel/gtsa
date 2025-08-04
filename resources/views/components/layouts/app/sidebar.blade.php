@@ -10,16 +10,16 @@
 
             <a href="{{ route('dashboard') }}" class="mr-5 flex items-center space-x-2" wire:navigate>
                 {{-- <x-app-logo /> --}}
-                <h2 class="font-bold">Penniel Starter Kit</h2>
+                <img src="{{ Storage::url('black-logo.avif') }}" alt="">
             </a>
 
             <flux:navlist variant="outline">
 
-                <flux:navlist.group :heading="__('PAGES')" class="grid">
+                <flux:navlist.group  class="grid">
 
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    {{-- <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item> --}}
 
-                    <flux:navlist.item icon="home" :href="route('products.index')" :current="request()->routeIs('products.index')" wire:navigate>{{ __('Products') }}</flux:navlist.item>
+                    <flux:navlist.item icon="clipboard-document-list" :href="route('listings')" :current="request()->routeIs('listings')" wire:navigate>{{ __('Listing') }} <livewire:component.listing-count/></flux:navlist.item>
                     
                 </flux:navlist.group>
                 

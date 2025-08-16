@@ -10,7 +10,8 @@
 
             <a href="{{ route('dashboard') }}" class="mr-5 flex items-center space-x-2" wire:navigate>
                 {{-- <x-app-logo /> --}}
-                <img src="{{ Storage::url('black-logo.avif') }}" alt="">
+                <img class="dark:hidden" src="{{ Storage::url('black-logo.avif') }}" alt="">
+                <img class="hidden dark:block" src="{{ Storage::url('white-logo.png') }}" alt="">
             </a>
 
             <flux:navlist variant="outline">

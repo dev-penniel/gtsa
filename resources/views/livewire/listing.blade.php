@@ -29,7 +29,8 @@ class extends Component {
 
 <div class="max-w-6xl mx-auto px-4 pb-8">
 
-    <img class="md:hidden" src="{{ Storage::url('black-logo.avif') }}" alt="">
+    <img class="dark:hidden md:hidden" src="{{ Storage::url('black-logo.avif') }}" alt="">
+    <img class="hidden dark:block md:hidden" src="{{ Storage::url('white-logo.png') }}" alt="">
 
     <!-- Header Section -->
    <div class="mb-5">
@@ -91,10 +92,12 @@ class extends Component {
                 </div>
             </div>
             
-            <div class="text-right">
-                <p class="text-xl font-bold drop-shadow-md">{{ $listing->price_range }} ZAR</p>
-                <p class="text-sm drop-shadow-sm">per night</p>
-            </div>
+            @if ($listing->price_range)
+                <div class="text-right">
+                    <p class="text-xl font-bold drop-shadow-md">{{ $listing->price_range }} ZAR</p>
+                    <p class="text-sm drop-shadow-sm">per night</p>
+                </div>
+            @endif
             </div>
         </div>
         </div>

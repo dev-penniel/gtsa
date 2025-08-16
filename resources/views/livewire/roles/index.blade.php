@@ -40,8 +40,9 @@ new class extends Component {
     <div>
 
         <div class="flex justify-between items-center mb-5">
-            
-            <a wire:navigate href="{{ route('roles.create') }}"><flux:button size="sm" variant="primary" class="btn-sm"> <flux:icon.plus class="size-5" /> Add New</flux:button></a>
+
+            <flux:button href="{{ route('roles.create') }}" wire:navigate  class="cursor-pointer">Add Role</flux:button>
+
 
             <disv class="w-[200px]">
                 <flux:input
@@ -57,12 +58,12 @@ new class extends Component {
         <table class="table-auto w-full">
             <thead>
                 <th>
-                    <tr class="bg-gray-100">
-                        <td class="px-5 py-3 font-bold text-sm">Role</td>
+                    <tr class="border-b border-gray-200 dark:border-gray-600">
+                        <td class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Role</td>
                         {{-- <td class="px-5 py-3 font-bold text-sm">Email</td>
                         <td class="px-5 py-3 font-bold text-sm">Created</td>
                         <td class="px-5 py-3 font-bold text-sm">Updated</td> --}}
-                        <td class="px-5 py-3 font-bold text-sm">Actions</td>
+                        <td class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Actions</td>
                     </tr>
                 </th>
             </thead>
@@ -70,7 +71,7 @@ new class extends Component {
 
                 @foreach ($roles as $role)
                 
-                    <tr class="border-b border-gray-300 hover:bg-gray-100">
+                    <tr class="border-b border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <td class="px-5 py-2 text-sm">{{ $role->name }}
 
                             <div class="flex space-x-3 flex-wrap">

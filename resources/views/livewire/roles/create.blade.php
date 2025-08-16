@@ -64,7 +64,7 @@ new class extends Component {
                 
             </div>
 
-            <div class="space-x-2">
+            <div class="flex gap-5 mb-5 flex-wrap">
                 @foreach ($permissions as $permission )
                     <label for="" ><input wire:model="selectedPermissions" value="{{ $permission->name }}" type="checkbox"> {{ $permission->name }}</label>
                 @endforeach

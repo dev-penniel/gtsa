@@ -740,7 +740,7 @@ new class extends Component {
         <div class="overflow-x-auto">
             <table class="table-auto w-full">
                 <thead>
-                    <tr class=" border-b border-gray-200">
+                    <tr class=" border-b border-gray-200 dark:border-gray-600">
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Name</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Type</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">City</th>
@@ -757,7 +757,7 @@ new class extends Component {
                 <tbody>
 
                     @foreach ($this->businesses as $business)
-                        <tr class="border-b border-gray-300 dark:hover:bg-black hover:bg-gray-100">
+                        <tr class="border-b border-gray-300 dark:hover:bg-gray-600 hover:bg-gray-100 dark:border-gray-600">
                             <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->name }}</td>
                             <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->business_type }}</td>
                             <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->city }}</td>

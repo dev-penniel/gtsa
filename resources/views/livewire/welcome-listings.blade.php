@@ -30,7 +30,7 @@ new class extends Component {
     //             'longitude' => $business->longitude,
     //             'name' => $business->name,
     //             'image' => 'https://placehold.co/600x400',
-    //         ];
+    //         ]; 
     //     })->toArray();
     // }
 
@@ -43,10 +43,11 @@ new class extends Component {
 <div class="relative">
     
         <!-- Left Column - Business List -->
-        <div class="bg-white ">
-            <div class="bg-white dark:bg-black z-10 p-4 border-b border-gray-200 sticky top-0">
+        <div class="">
+            <div class="bg-white dark:bg-zinc-800 z-10 p-4 border-b border-gray-200 sticky top-0">
                 <a wire:navigate href="{{ route('home') }}">
-                    <img class="" src="{{ Storage::url('black-logo.avif') }}" alt="">
+                    <img class="dark:hidden" src="{{ Storage::url('black-logo.avif') }}" alt="">
+                    <img class="hidden dark:block" src="{{ Storage::url('white-logo.png') }}" alt="">
                 </a>
                 <input 
                     wire:model.live="search"
@@ -55,7 +56,7 @@ new class extends Component {
                 >
             </div>
             
-            <div class="divide-y divide-gray-500 dark:bg-black sticky top-0">
+            <div class="divide-y divide-gray-500 sticky top-0">
                 <div class="grid  grid-cols-1 gap-6 mt-5">
                     @foreach($this->businesses as $business)
                         <a wire:navigate href="{{ route('listing', ['slug' => $business->slug]) }}" 

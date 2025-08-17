@@ -81,7 +81,7 @@ class extends Component {
                             marker.bindTooltip(`
                                 <div class="rounded" style="text-align:center; width:300px; height:200px;overflow:hidden;">
                                     <strong>${loc.name}</strong><br/>
-                                    <img class="rounded" src="${loc.cover_image}" alt="${loc.name}" style="width:100%; height:auto; object-fit:cover; margin-top:5px;" />
+                                    <img class="rounded" src="storage/${loc.cover_image}" alt="${loc.name}" style="width:100%; height:auto; object-fit:cover; margin-top:5px;" />
                                 </div>
                             `, {
                                 direction: 'top',

@@ -30,7 +30,7 @@ class extends Component {
 <div class="max-w-6xl mx-auto px-4 pb-8">
 
     <img class="dark:hidden md:hidden" src="{{ Storage::url('black-logo.avif') }}" alt="">
-    <img class="dark:block md:dark:hidden" src="{{ Storage::url('white-logo.png') }}" alt="">
+    <img class="dark:block hidden md:dark:hidden" src="{{ Storage::url('white-logo.png') }}" alt="">
 
     <!-- Header Section -->
    <div class="mb-5">

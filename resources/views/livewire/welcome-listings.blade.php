@@ -91,7 +91,7 @@ new class extends Component {
                                             <p class="text-sm drop-shadow-sm">{{ $business->city }}</p>
                                         </div>
                                         
-                                        <div class="flex items-center bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm">
+                                        {{-- <div class="flex items-center bg-black/30 px-2 py-1 rounded-full backdrop-blur-sm">
                                             @for($i = 1; $i <= 5; $i++)
                                                 @if($i <= floor($business->average_rating))
                                                     <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -106,7 +106,7 @@ new class extends Component {
                                             <span class="text-xs ml-1">
                                                 ({{ $business->review_count }})
                                             </span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

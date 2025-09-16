@@ -769,8 +769,11 @@ new class extends Component {
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Tier</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Rating</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Payment</th>
-                        <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Created</th>
-                        <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Updated</th>
+                        <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Amenities</th>
+                        <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Services</th>
+                        <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Experience</th>
+                        {{-- <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Created</th>
+                        <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Updated</th> --}}
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
@@ -810,8 +813,36 @@ new class extends Component {
                                     <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Cash Only</span>
                                 @endif
                             </td>
-                            <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->created_at->format('M d, Y H:i') }}</td>
-                            <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->updated_at->format('M d, Y H:i') }}</td>
+
+                            
+
+                            <td class="px-5 py-2 text-sm whitespace-nowrap">
+                                @if ($business->amenities)
+                                    @foreach ($business->amenities as $amenity)
+                                        <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">{{ $amenity }}</span>
+                                    @endforeach
+                                @endif
+                            </td>
+
+                            <td class="px-5 py-2 text-sm whitespace-nowrap">
+                                @if ($business->services)
+                                    @foreach ($business->services as $service)
+                                        <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">{{ $service }}</span>
+                                    @endforeach
+                                @endif
+                            </td>
+
+                            <td class="px-5 py-2 text-sm whitespace-nowrap">
+                                @if ($business->experience)
+                                    @foreach ($business->experience as $experience)
+                                        <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">{{ $experience }}</span>
+                                    @endforeach
+                                @endif
+                            </td>
+                            
+
+                            {{-- <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->created_at->format('M d, Y H:i') }}</td>
+                            <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->updated_at->format('M d, Y H:i') }}</td> --}}
                                 
                             <td class="px-5 py-2 text-sm whitespace-nowrap flex gap-2 place-content-center">
                                 <flux:modal.trigger wire:click="edit({{ $business->id }})" name="update-business">

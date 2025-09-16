@@ -128,59 +128,63 @@ class extends Component {
             </div>
 
             <!-- Amenities -->
-            <div class="mb-8">
-                <h2 class="text-xl font-semibold mb-4">Amenities</h2>
-                <div class="flex gap-2 flex-wrap gap-4">
-                    @if($listing->parking)
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Parking</span>
-                        </div>
-                    @endif
-                    @if($listing->pool)
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Swimming Pool</span>
-                        </div>
-                    @endif
-                    @if($listing->restaurant)
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Restaurant</span>
-                        </div>
-                    @endif
-                    @if($listing->bar)
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Bar</span>
-                        </div>
-                    @endif
-                    @if($listing->pet_friendly)
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Pet Friendly</span>
-                        </div>
-                    @endif
-                    @if($listing->accepts_credit_card)
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span>Credit Cards</span>
-                        </div>
-                    @endif
+            @if($listing->services)
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Services</h2>
+                    <div class="flex gap-2 flex-wrap gap-4">
+                            @foreach ($listing->services as $service)
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>{{$service}}</span>
+                                </div>
+                            @endforeach
+                        
+                        
+                    </div>
                 </div>
-            </div>
+            @endif
+
+            <!-- Amenities -->
+            @if($listing->amenities)
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Amenities</h2>
+                    <div class="flex gap-2 flex-wrap gap-4">
+                        
+                            @foreach ($listing->amenities as $amenitie)
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>{{$amenitie}}</span>
+                                </div>
+                            @endforeach
+                    
+                        
+                    </div>
+                </div>
+             @endif
+
+            <!-- Amenities -->
+            @if($listing->experience)
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Experience</h2>
+                    <div class="flex gap-2 flex-wrap gap-4">
+                        
+                            @foreach ($listing->experience as $experience)
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>{{$experience}}</span>
+                                </div>
+                            @endforeach
+                        
+                        
+                    </div>
+                </div>
+            @endif
 
             <!-- Image Gallery -->
     @if ($listing->images)

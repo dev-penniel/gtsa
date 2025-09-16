@@ -18,6 +18,10 @@ class TourismBusiness extends Model
         'status',
         'date_registered',
 
+        'services',
+        'experience',
+        'amenities',
+
         // Contact
         'phone',
         'email',
@@ -71,6 +75,8 @@ class TourismBusiness extends Model
         'category' => 'array',
         'images' => 'array',
         'services' => 'array',
+        'amenities' => 'array',
+        'experience' => 'array',
         'operating_hours' => 'array',
         'is_featured' => 'boolean',
         'parking' => 'boolean',

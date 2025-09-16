@@ -43,11 +43,16 @@ return new class extends Migration
 
             // Services & Amenities
             $table->json('services')->nullable(); // e.g., ["Free WiFi", "Guided Hiking"]
-            $table->boolean('parking')->default(false);
-            $table->boolean('pool')->default(false);
-            $table->boolean('bar')->default(false);
-            $table->boolean('restaurant')->default(false);
-            $table->boolean('pet_friendly')->default(false);
+            $table->json('amenities')->nullable();
+            $table->json('experience')->nullable();
+
+
+
+            // $table->boolean('parking')->default(false);
+            // $table->boolean('pool')->default(false);
+            // $table->boolean('bar')->default(false);
+            // $table->boolean('restaurant')->default(false);
+            // $table->boolean('pet_friendly')->default(false);
 
             // Operating Hours
             $table->json('operating_hours')->nullable(); // {"monday": "08:00-22:00", ...}

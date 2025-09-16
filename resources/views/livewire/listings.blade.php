@@ -38,7 +38,6 @@ new class extends Component {
     public $latitude;
     public $longitude;
     public $video_url;
-    public $services = [];
     public $parking = false;
     public $pool = false;
     public $bar = false;
@@ -54,6 +53,10 @@ new class extends Component {
     public $owner_email;
     public $average_rating;
     public $review_count;
+    public $amenities;
+    public $experiences;
+    public $services;
+
 
     public function getBusinessesProperty()
     {
@@ -70,6 +73,12 @@ new class extends Component {
 
     public function createBusiness()
     {
+
+        // handle arrays
+        $amenitiesArray = explode(',', $this->amenities);
+        $servicesArray = explode(',', $this->services);
+        $experiencesArray = explode(',', $this->experiences);
+
         $validated = $this->validate([
             'name' => "required|string",
             'description' => "nullable|string",
@@ -113,12 +122,6 @@ new class extends Component {
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'video_url' => $this->video_url,
-            'services' => $this->services,
-            'parking' => $this->parking,
-            'pool' => $this->pool,
-            'bar' => $this->bar,
-            'restaurant' => $this->restaurant,
-            'pet_friendly' => $this->pet_friendly,
             'price_range' => $this->price_range,
             'currency' => $this->currency,
             'accepts_credit_card' => $this->accepts_credit_card,
@@ -131,6 +134,9 @@ new class extends Component {
             'review_count' => $this->review_count,
             'cover_image' => $coverImagePath,
             'images' => !empty($imagePaths) ? json_encode($imagePaths) : null, // Store as JSON array
+            'services' => $servicesArray,
+            'amenities' => $amenitiesArray,
+            'experience' => $experiencesArray,
         ]);
 
         $this->reset();
@@ -365,14 +371,21 @@ new class extends Component {
                 {{-- Amenities --}}
                 <div class="space-y-4">
                     <flux:heading size="sm">Amenities</flux:heading>
-                    <div class="grid grid-cols-2 gap-4">
+                    <flux:textarea wire:model="amenities" />
+                    {{-- <div class="grid grid-cols-2 gap-4">
                         <flux:checkbox wire:model="parking" label="Parking" />
                         <flux:checkbox wire:model="pool" label="Pool" />
                         <flux:checkbox wire:model="bar" label="Bar" />
                         <flux:checkbox wire:model="restaurant" label="Restaurant" />
                         <flux:checkbox wire:model="pet_friendly" label="Pet Friendly" />
                         <flux:checkbox wire:model="accepts_credit_card" label="Accepts Credit Cards" />
-                    </div>
+                    </div> --}}
+
+                    <flux:heading size="sm">Services</flux:heading>
+                    <flux:textarea wire:model="services" />
+
+                    <flux:heading size="sm">Experiences</flux:heading>
+                    <flux:textarea wire:model="experiences" />
 
                     <div class="grid grid-cols-2 gap-4">
                         <flux:input wire:model="price_range" placeholder="R0 - R1000" label="Price Range" />

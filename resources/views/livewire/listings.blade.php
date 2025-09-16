@@ -167,12 +167,6 @@ new class extends Component {
         $this->latitude = $business->latitude;
         $this->longitude = $business->longitude;
         $this->video_url = $business->video_url;
-        $this->services = $business->services ?? [];
-        $this->parking = $business->parking;
-        $this->pool = $business->pool;
-        $this->bar = $business->bar;
-        $this->restaurant = $business->restaurant;
-        $this->pet_friendly = $business->pet_friendly;
         $this->price_range = $business->price_range;
         $this->currency = $business->currency;
         $this->accepts_credit_card = $business->accepts_credit_card;
@@ -183,6 +177,10 @@ new class extends Component {
         $this->owner_email = $business->owner_email;
         $this->average_rating = $business->average_rating;
         $this->review_count = $business->review_count;
+        $this->amenities = $business->amenities;
+        $this->services = $business->services;
+        $this->experiences = $business->experience;
+
         
         // Set current images
         $this->currentCoverImage = $business->cover_image;
@@ -224,6 +222,11 @@ new class extends Component {
 
     public function updateBusiness($id)
     {
+        // handle arrays
+        $amenitiesArray = explode(',', $this->amenities);
+        $servicesArray = explode(',', $this->services);
+        $experiencesArray = explode(',', $this->experiences);
+
         $validated = $this->validate([
             'editedName' => 'required|string',
             'description' => 'nullable|string',
@@ -282,12 +285,6 @@ new class extends Component {
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'video_url' => $this->video_url,
-            'services' => $this->services,
-            'parking' => $this->parking,
-            'pool' => $this->pool,
-            'bar' => $this->bar,
-            'restaurant' => $this->restaurant,
-            'pet_friendly' => $this->pet_friendly,
             'price_range' => $this->price_range,
             'currency' => $this->currency,
             'accepts_credit_card' => $this->accepts_credit_card,
@@ -300,6 +297,9 @@ new class extends Component {
             'review_count' => $this->review_count,
             'cover_image' => $coverImagePath,
             'images' => !empty($imagePaths) ? json_encode($imagePaths) : null,
+            'services' => $servicesArray,
+            'amenities' => $amenitiesArray,
+            'experience' => $experiencesArray,
         ]);
 
         $this->originalName = $this->editedName;
@@ -548,14 +548,21 @@ new class extends Component {
                 {{-- Amenities --}}
                 <div class="space-y-4">
                     <flux:heading size="sm">Amenities</flux:heading>
-                    <div class="grid grid-cols-2 gap-4">
+                    <flux:textarea wire:model="amenities" />
+                    {{-- <div class="grid grid-cols-2 gap-4">
                         <flux:checkbox wire:model="parking" label="Parking" />
                         <flux:checkbox wire:model="pool" label="Pool" />
                         <flux:checkbox wire:model="bar" label="Bar" />
                         <flux:checkbox wire:model="restaurant" label="Restaurant" />
                         <flux:checkbox wire:model="pet_friendly" label="Pet Friendly" />
                         <flux:checkbox wire:model="accepts_credit_card" label="Accepts Credit Cards" />
-                    </div>
+                    </div> --}}
+
+                    <flux:heading size="sm">Services</flux:heading>
+                    <flux:textarea wire:model="services" />
+
+                    <flux:heading size="sm">Experiences</flux:heading>
+                    <flux:textarea wire:model="experiences" />
 
                     <div class="grid grid-cols-2 gap-4">
                         <flux:input wire:model="price_range" placeholder="R0 - R1000" label="Price Range" />

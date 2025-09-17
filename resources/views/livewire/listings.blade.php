@@ -74,10 +74,23 @@ new class extends Component {
     public function createBusiness()
     {
 
+        $amenitiesArray = null;
+        $servicesArray = null;
+        $experiencesArray = null;
+
         // handle arrays
-        $amenitiesArray = explode(',', $this->amenities);
-        $servicesArray = explode(',', $this->services);
-        $experiencesArray = explode(',', $this->experiences);
+        if($this->amenities){
+            $amenitiesArray = explode(',', $this->amenities);
+        }
+
+        if($this->services){
+            $servicesArray = explode(',', $this->services);
+        }
+
+        if($this->experiences){
+            $experiencesArray = explode(',', $this->experiences);
+        }
+    
 
         $validated = $this->validate([
             'name' => "required|string",
@@ -85,7 +98,7 @@ new class extends Component {
             'business_type' => "required|string",
             'country' => "required|string",
             'city' => "required|string",
-            'coverImage' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'coverImage' => 'nullable|image|mimes:jpg,jpeg,png|max:2048|required',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpg,jpeg,png|max:2048',
         ]);
@@ -222,10 +235,22 @@ new class extends Component {
 
     public function updateBusiness($id)
     {
-        // handle arrays
-        $amenitiesArray = explode(',', $this->amenities);
-        $servicesArray = explode(',', $this->services);
-        $experiencesArray = explode(',', $this->experiences);
+        $amenitiesArray = null;
+        $servicesArray = null;
+        $experiencesArray = null;
+
+        // handle strings , check if they ar not arrays
+        if($this->amenities){
+            $amenitiesArray = is_array($this->amenities) ? $this->amenities : explode(',', $this->amenities);
+        }
+
+        if($this->services){
+            $servicesArray = is_array($this->services) ? $this->services : explode(',', $this->services);
+        }
+
+        if($this->experiences){
+            $experiencesArray = is_array($this->experiences) ? $this->experiences : explode(',', $this->experiences);
+        }
 
         $validated = $this->validate([
             'editedName' => 'required|string',

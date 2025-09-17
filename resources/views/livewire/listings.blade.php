@@ -85,9 +85,9 @@ new class extends Component {
             'business_type' => "required|string",
             'country' => "required|string",
             'city' => "required|string",
-            'coverImage' => 'required|image|max:2048', // 2MB Max
+            'coverImage' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'images' => 'nullable|array',
-            'images.*' => 'image|max:2048', // Each image max 2MB
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         // Generate slug from business name
@@ -233,9 +233,9 @@ new class extends Component {
             'business_type' => 'required|string',
             'country' => 'required|string',
             'city' => 'required|string',
-            'coverImage' => 'nullable|image|max:2048',
+            'coverImage' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'images' => 'nullable|array',
-            'images.*' => 'image|max:2048',
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $business = TourismBusiness::findOrFail($id);
@@ -371,7 +371,7 @@ new class extends Component {
                 {{-- Amenities --}}
                 <div class="space-y-4">
                     <flux:heading size="sm">Amenities</flux:heading>
-                    <flux:textarea wire:model="amenities" />
+                    <flux:textarea placeholder="items 1, item 2, item 3" wire:model="amenities" />
                     {{-- <div class="grid grid-cols-2 gap-4">
                         <flux:checkbox wire:model="parking" label="Parking" />
                         <flux:checkbox wire:model="pool" label="Pool" />
@@ -382,10 +382,10 @@ new class extends Component {
                     </div> --}}
 
                     <flux:heading size="sm">Services</flux:heading>
-                    <flux:textarea wire:model="services" />
+                    <flux:textarea placeholder="items 1, item 2, item 3" wire:model="services" />
 
                     <flux:heading size="sm">Experiences</flux:heading>
-                    <flux:textarea wire:model="experiences" />
+                    <flux:textarea placeholder="items 1, item 2, item 3" wire:model="experiences" />
 
                     <div class="grid grid-cols-2 gap-4">
                         <flux:input wire:model="price_range" placeholder="R0 - R1000" label="Price Range" />
@@ -548,7 +548,7 @@ new class extends Component {
                 {{-- Amenities --}}
                 <div class="space-y-4">
                     <flux:heading size="sm">Amenities</flux:heading>
-                    <flux:textarea wire:model="amenities" />
+                    <flux:textarea placeholder="items 1, item 2, item 3" wire:model="amenities" />
                     {{-- <div class="grid grid-cols-2 gap-4">
                         <flux:checkbox wire:model="parking" label="Parking" />
                         <flux:checkbox wire:model="pool" label="Pool" />
@@ -559,10 +559,10 @@ new class extends Component {
                     </div> --}}
 
                     <flux:heading size="sm">Services</flux:heading>
-                    <flux:textarea wire:model="services" />
+                    <flux:textarea placeholder="items 1, item 2, item 3" wire:model="services" />
 
                     <flux:heading size="sm">Experiences</flux:heading>
-                    <flux:textarea wire:model="experiences" />
+                    <flux:textarea placeholder="items 1, item 2, item 3" wire:model="experiences" />
 
                     <div class="grid grid-cols-2 gap-4">
                         <flux:input wire:model="price_range" placeholder="R0 - R1000" label="Price Range" />

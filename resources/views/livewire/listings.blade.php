@@ -90,7 +90,15 @@ new class extends Component {
         if($this->experiences){
             $experiencesArray = explode(',', $this->experiences);
         }
-    
+
+        // Default Values for SQlite
+        if($this->review_count === null){
+            $this->review_count = 0;
+        }
+
+        if($this->average_rating === null){
+            $this->average_rating = 0;
+        }
 
         $validated = $this->validate([
             'name' => "required|string",
@@ -250,6 +258,15 @@ new class extends Component {
 
         if($this->experiences){
             $experiencesArray = is_array($this->experiences) ? $this->experiences : explode(',', $this->experiences);
+        }
+
+        // Default Values for SQlite
+        if($this->review_count === null){
+            $this->review_count = 0;
+        }
+
+        if($this->average_rating === null){
+            $this->average_rating = 0;
         }
 
         $validated = $this->validate([

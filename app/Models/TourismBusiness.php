@@ -90,4 +90,11 @@ class TourismBusiness extends Model
         'longitude' => 'float',
     ];
 
+    protected$attributes = [
+        'review_count' => 0,
+        'average_rating' => 0,
+        'accepts_credit_card' => true,
+        'is_featured' => false,
+    ];
+
 }

@@ -74,7 +74,7 @@ new class extends Component {
                         <!-- Filter Icon Button -->
                         <button 
                             @click="open = !open" 
-                            class="p-2 border rounded-xl hover:bg-gray-100 transition"
+                            class="p-2 border rounded-xl hover:bg-gray-100 transition cursor-pointer"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" 
                                 fill="none" 
@@ -96,20 +96,20 @@ new class extends Component {
                         >
                             <ul class="py-2 text-sm text-gray-700">
                                 <li>
-                                    <button wire:click="$set('filter', 'region 1')" 
-                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                    <button @click="open = !open"  wire:click="$set('filter', 'region 1')" 
+                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">
                                         Region 1
                                     </button>
                                 </li>
                                 <li>
-                                    <button wire:click="$set('filter', 'region 2')" 
-                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                    <button @click="open = !open"  wire:click="$set('filter', 'region 2')" 
+                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">
                                         Region 2
                                     </button>
                                 </li>
                                 <li>
-                                    <button wire:click="$set('filter', 'region 3')" 
-                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                    <button @click="open = !open"  wire:click="$set('filter', 'region 3')" 
+                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">
                                         Region 3
                                     </button>
                                 </li>

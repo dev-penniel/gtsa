@@ -406,9 +406,16 @@ new class extends Component {
                 <div class="space-y-4">
                     <flux:heading size="sm">Location</flux:heading>
                     <flux:select wire:model="region" label="Region">
-                        <flux:select.option value="region 1">Region 1</flux:select.option>
-                        <flux:select.option value="region 2">Region 2</flux:select.option>
-                        <flux:select.option value="region 3">Region 3</flux:select.option>
+                        <flux:select.option value="Eastern Cape">Eastern Cape</flux:select.option>
+                        <flux:select.option value="Free State">Free State</flux:select.option>
+                        <flux:select.option value="Gauteng">Gauteng</flux:select.option>
+                        <flux:select.option value="KwaZulu-Natal">KwaZulu-Natal</flux:select.option>
+                        <flux:select.option value="Limpopo">Limpopo</flux:select.option>
+                        <flux:select.option value="Mpumalanga">Mpumalanga</flux:select.option>
+                        <flux:select.option value="Northern Cape">Northern Cape</flux:select.option>
+                        <flux:select.option value="North West">North West</flux:select.option>
+                        <flux:select.option value="Western Cape">Western Cape</flux:select.option>
+                        <flux:select.option value="International">International</flux:select.option>
                     </flux:select>
                     <flux:input wire:model="country" label="Country" />
                     <flux:input wire:model="city" label="City" />
@@ -588,9 +595,16 @@ new class extends Component {
                 <div class="space-y-4">
                     <flux:heading size="sm">Location</flux:heading>
                     <flux:select wire:model="region" label="Region">
-                        <flux:select.option value="region 1">Region 1</flux:select.option>
-                        <flux:select.option value="region 2">Region 2</flux:select.option>
-                        <flux:select.option value="region 3">Region 3</flux:select.option>
+                        <flux:select.option value="Eastern Cape">Eastern Cape</flux:select.option>
+                        <flux:select.option value="Free State">Free State</flux:select.option>
+                        <flux:select.option value="Gauteng">Gauteng</flux:select.option>
+                        <flux:select.option value="KwaZulu-Natal">KwaZulu-Natal</flux:select.option>
+                        <flux:select.option value="Limpopo">Limpopo</flux:select.option>
+                        <flux:select.option value="Mpumalanga">Mpumalanga</flux:select.option>
+                        <flux:select.option value="Northern Cape">Northern Cape</flux:select.option>
+                        <flux:select.option value="North West">North West</flux:select.option>
+                        <flux:select.option value="Western Cape">Western Cape</flux:select.option>
+                        <flux:select.option value="International">International</flux:select.option>
                     </flux:select>
                     <flux:input wire:model="country" label="Country" />
                     <flux:input wire:model="city" label="City" />

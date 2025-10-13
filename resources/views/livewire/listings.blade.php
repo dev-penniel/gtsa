@@ -24,6 +24,7 @@ new class extends Component {
     public $name, $originalName, $editedName, $slug, $id;
     public $search = '';
     public $description;
+    public $region;
     public $business_type;
     public $category = [];
     public $is_featured = false;
@@ -127,6 +128,7 @@ new class extends Component {
 
         $business = TourismBusiness::create([
             'name' => $this->name,
+            'region' => $this->region,
             'slug' => $this->slug,
             'description' => $this->description,
             'business_type' => $this->business_type,
@@ -179,6 +181,7 @@ new class extends Component {
         $this->is_featured = $business->is_featured;
         $this->status = $business->status;
         $this->phone = $business->phone;
+        $this->region = $business->region;
         $this->email = $business->email;
         $this->website = $business->website;
         $this->whatsapp = $business->whatsapp;
@@ -312,6 +315,7 @@ new class extends Component {
         $business->update([
             'name' => $this->editedName,
             'slug' => $slug,
+            'region' => $this->region,
             'description' => $this->description,
             'business_type' => $this->business_type,
             'category' => $this->category,
@@ -382,10 +386,10 @@ new class extends Component {
                     <flux:textarea wire:model="description" label="Description" />
                     <flux:input wire:model="business_type" label="Business Type" placeholder="e.g., Lodge, Travel Agency" />
                     <flux:checkbox wire:model="is_featured" label="Featured Business" />
-                    <flux:select wire:model="status" label="Status">
-                        <option value="pending">Pending</option>
-                        <option value="active">Active</option>
-                        <option value="suspended">Suspended</option>
+                    <flux:select wire:model="region" label="Region">
+                        <flux:select.option value="pending">Pending</flux:select.option>
+                        <flux:select.option value="active">Active</flux:select.option>
+                        <flux:select.option value="suspended">Suspended</flux:select.option>
                     </flux:select>
                 </div>
                 
@@ -401,6 +405,11 @@ new class extends Component {
                 {{-- Location --}}
                 <div class="space-y-4">
                     <flux:heading size="sm">Location</flux:heading>
+                    <flux:select wire:model="region" label="Region">
+                        <flux:select.option value="region 1">Region 1</flux:select.option>
+                        <flux:select.option value="region 2">Region 2</flux:select.option>
+                        <flux:select.option value="region 3">Region 3</flux:select.option>
+                    </flux:select>
                     <flux:input wire:model="country" label="Country" />
                     <flux:input wire:model="city" label="City" />
                     <flux:input wire:model="address" label="Address" />
@@ -578,6 +587,11 @@ new class extends Component {
                 {{-- Location --}}
                 <div class="space-y-4">
                     <flux:heading size="sm">Location</flux:heading>
+                    <flux:select wire:model="region" label="Region">
+                        <flux:select.option value="region 1">Region 1</flux:select.option>
+                        <flux:select.option value="region 2">Region 2</flux:select.option>
+                        <flux:select.option value="region 3">Region 3</flux:select.option>
+                    </flux:select>
                     <flux:input wire:model="country" label="Country" />
                     <flux:input wire:model="city" label="City" />
                     <flux:input wire:model="address" label="Address" />
@@ -805,6 +819,7 @@ new class extends Component {
                     <tr class=" border-b border-gray-200 dark:border-gray-600">
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Name</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Type</th>
+                        <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Region</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">City</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Status</th>
                         <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Price Range</th>
@@ -825,6 +840,7 @@ new class extends Component {
                         <tr class="border-b border-gray-300 dark:hover:bg-gray-600 hover:bg-gray-100 dark:border-gray-600">
                             <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->name }}</td>
                             <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->business_type }}</td>
+                            <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->region }}</td>
                             <td class="px-5 py-2 text-sm whitespace-nowrap">{{ $business->city }}</td>
                             <td class="px-5 py-2 text-sm whitespace-nowrap">
                                 <span class="px-2 py-1 text-xs rounded-full 

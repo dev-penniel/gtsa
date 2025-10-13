@@ -8,6 +8,7 @@ new class extends Component {
     use WithPagination;
     
     public $search = '';
+    public $filter;
     public $selectedBusiness = null;
     public $locations = [];
     
@@ -16,10 +17,20 @@ new class extends Component {
     {
         return TourismBusiness::when($this->search, function($query) {
             $search = $this->search;
-            $query->where('name', 'like', '%'.$search.'%')
-                  ->orWhere('city', 'like', '%'.$search.'%');
-        })->latest()->paginate(5);
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%'.$search.'%')
+                ->orWhere('region', 'like', '%'.$search.'%')
+                ->orWhere('city', 'like', '%'.$search.'%');
+            });
+        })
+        ->when($this->filter, function($query) {
+            $query->where('region', $this->filter);
+        })
+        ->latest()
+        ->paginate(5);
     }
+
+
 
     // formating data from computed properties
     // public function getMapLocationsProperty()
@@ -49,11 +60,64 @@ new class extends Component {
                     <img class="dark:hidden" src="{{ Storage::url('black-logo.avif') }}" alt="">
                     <img class="hidden dark:block" src="{{ Storage::url('white-logo.png') }}" alt="">
                 </a>
-                <input 
-                    wire:model.live="search"
-                    placeholder="Search..." 
-                    class="mt-2 w-full p-2 border rounded-xl"
-                >
+
+                <div class="flex items-center gap-2 mt-2" x-data="{ open: false }">
+                    <!-- Search Input -->
+                    <input 
+                        wire:model.live="search"
+                        placeholder="Search..." 
+                        class="flex-1 p-2 border rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                    >
+
+                    <!-- Filter Button -->
+                    <div class="relative">
+                        <!-- Filter Icon Button -->
+                        <button 
+                            @click="open = !open" 
+                            class="p-2 border rounded-xl hover:bg-gray-100 transition"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke-width="1.5" 
+                                stroke="currentColor" 
+                                class="w-5 h-5 text-gray-600">
+                                <path stroke-linecap="round" stroke-linejoin="round" 
+                                    d="M3 4h18l-7 8v6l-4 2v-8L3 4z" />
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown -->
+                        <div 
+                            x-show="open" 
+                            @click.away="open = false"
+                            x-transition
+                            class="absolute right-0 mt-2 w-40 bg-white border rounded-xl shadow-lg z-10"
+                        >
+                            <ul class="py-2 text-sm text-gray-700">
+                                <li>
+                                    <button wire:click="$set('filter', 'region 1')" 
+                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                        Region 1
+                                    </button>
+                                </li>
+                                <li>
+                                    <button wire:click="$set('filter', 'region 2')" 
+                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                        Region 2
+                                    </button>
+                                </li>
+                                <li>
+                                    <button wire:click="$set('filter', 'region 3')" 
+                                            class="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                        Region 3
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             
             <div class="divide-y divide-gray-500 sticky top-0">

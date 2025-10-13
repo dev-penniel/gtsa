@@ -17,6 +17,7 @@ class TourismBusiness extends Model
         'is_featured',
         'status',
         'date_registered',
+        'region',
 
         'services',
         'experience',

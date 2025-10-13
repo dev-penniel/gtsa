@@ -31,6 +31,7 @@ return new class extends Migration
 
             // Location
             $table->string('country');
+            $table->string('region');
             $table->string('city');
             $table->string('address')->nullable();
             $table->decimal('latitude', 10, 6)->nullable();

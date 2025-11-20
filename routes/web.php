@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth'])->group(function(){
 
     Volt::route('listings', 'listings')->name('listings');
+    Volt::route('regions', 'regions')->name('regions');
+
 
 });
 

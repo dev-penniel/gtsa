@@ -18,18 +18,22 @@ class PermissionSeeder extends Seeder
         // Create permissions
 
         $permissions = [
-            'role-list',
-            'role-create',
-            'role-edit',
-            'role-delete',
-            'product-list',
-            'product-create',
-            'product-edit',
-            'product-delete',
-            'user-list',
-            'user-create',
-            'user-edit',
-            'user-delete',
+            // 'role-list',
+            // 'role-create',
+            // 'role-edit',
+            // 'role-delete',
+            // 'product-list',
+            // 'product-create',
+            // 'product-edit',
+            // 'product-delete',
+            // 'user-list',
+            // 'user-create',
+            // 'user-edit',
+            // 'user-delete',
+            'category-list',
+            'category-create',
+            'category-edit',
+            'category-delete',
         ];
 
         foreach($permissions as $key => $permission)
@@ -38,8 +42,8 @@ class PermissionSeeder extends Seeder
         }
         
         // create roles and assighn permisisons
-        $role = Role::create(['name' => 'General Admin']);
-        $role->givePermissionTo(Permission::all());
+        // $role = Role::create(['name' => 'General Admin']);
+        // $role->givePermissionTo(Permission::all());
 
     }
 

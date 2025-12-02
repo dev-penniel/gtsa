@@ -22,7 +22,11 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
+Route::middleware(['auth', 'permission:category-list'])->group(function(){
 
+    Volt::route('categories/index', 'categories.index')->name('categories.index');
+     
+});
 
 Route::middleware(['auth'])->group(function(){
 

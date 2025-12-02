@@ -28,6 +28,14 @@ Route::middleware(['auth', 'permission:category-list'])->group(function(){
      
 });
 
+Route::middleware(['auth', 'permission:article-list'])->group(function(){
+
+    Volt::route('articles/index', 'articles.index')->name('articles.index');
+    Volt::route('articles/create', 'articles.create')->name('articles.create');
+    Volt::route('articles/{id}/edit', 'articles.edit')->name('articles.edit');
+     
+});
+
 Route::middleware(['auth'])->group(function(){
 
     Volt::route('products/index', 'products.index')->name('products.index');

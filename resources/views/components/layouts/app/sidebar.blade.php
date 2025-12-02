@@ -22,6 +22,8 @@
 
                     <flux:navlist.item icon="clipboard-document-list" :href="route('listings')" :current="request()->routeIs('listings')" wire:navigate>{{ __('Listing') }} <livewire:component.listing-count/></flux:navlist.item>
 
+                    <flux:navlist.item icon="clipboard-document-list" :href="route('articles.index')" :current="request()->routeIs('articles.index')" wire:navigate>{{ __('Article') }} <livewire:component.listing-count/></flux:navlist.item>
+
                     <flux:navlist.item icon="clipboard-document-list" :href="route('categories.index')" :current="request()->routeIs('categories.index')" wire:navigate>{{ __('Category') }} <livewire:component.listing-count/></flux:navlist.item>
                     
                 </flux:navlist.group>
@@ -156,5 +158,7 @@
         {{ $slot }}
 
         @fluxScripts
+        <!-- Include the Quill library -->
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     </body>
 </html>
